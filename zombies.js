@@ -13,9 +13,9 @@ class Item {
   constructor(name) {
     this.name = name;
   }
- }
+}
 
- class Weapon extends Item {
+class Weapon extends Item {
   constructor(name, damage) {
     super(name);
     this.damage = damage;
@@ -50,15 +50,16 @@ class Player {
   }
 
   checkPack() {
-    let playerPack = this._pack.length;
+    let playerPack = this._pack;
     console.log('Contents: ');
-    for (let i in playerPack) {
+    for (let i in playerPack.length) {
       console.log(playerPack[i] + ", ");
     }
   }
 
   takeItem(item) {
-    if (this._pack.length > 2 && !this._pack.includes(item)) {
+    let packContents = this._pack;
+    if (packContents.length > 2 && !packContents.includes(item)) {
       console.log('Your pack is full.');
       return false;
     } else {
@@ -127,42 +128,42 @@ class Player {
   }
 }
 
-  class Zombie {
-    constructor(health, strength, speed) {
-      this._maxHealth = health;
-      this.health = health;
-      this.strength = strength;
-      this.speed = speed;
-      this.isAlive = true;
-    }
+class Zombie {
+  constructor(health, strength, speed) {
+    this._maxHealth = health;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
   }
+}
 
-  class FastZombie extends Zombie {
-    constructor(health, strength, speed) {
-      super(health, strength, speed);
-      this.health = health;
-      this.strength = strength;
-      this.speed = speed;
-    }
+class FastZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(health, strength, speed);
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
   }
+}
 
-  class StrongZombie extends Zombie {
-    constructor(health, strength, speed) {
-      super(health, strength, speed);
-    }
+class StrongZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(health, strength, speed);
   }
+}
 
-  class RangedZombie extends Zombie {
-    constructor(health, strength, speed) {
-      super(health, strength, speed);
-    }
+class RangedZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(health, strength, speed);
   }
+}
 
-  class ExplodingZombie extends Zombie {
-    constructor(health, strength, speed) {
-      super(health, strength, speed);
-    }
+class ExplodingZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(health, strength, speed);
   }
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -451,7 +452,7 @@ class Player {
  * Sample run.
  * Feel free to edit this and check your game logic.
  */
-// function runGame() {
+function runGame() {
 //   var player = new Player("Joan", 500, 30, 70);
 //   var zombie = new Zombie(40, 50, 20);
 //   var charger = new FastZombie(175, 25, 60);
@@ -486,6 +487,6 @@ class Player {
 //   player.useItem(sandwich);
 //   console.log("After health: " + player.health);
 //   player.checkPack();
-// }
+}
 
 // runGame();
