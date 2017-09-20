@@ -404,7 +404,11 @@ class Player {
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-
+  class RangedZombie extends Zombie {
+    constructor(health, strength, speed) {
+      super(health, strength, speed);
+    }
+  }
 
 /**
  * RangedZombie Extends Zombie Class
