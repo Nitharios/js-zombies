@@ -29,7 +29,7 @@ function Item (name) {
  */
 
 function Weapon(name, damage) {
-  this.name = name;
+  Item.call(this, name); // call parent constructor
   this.damage = damage;
 }
 
@@ -38,7 +38,8 @@ function Weapon(name, damage) {
  * -----------------------------
  */
 
-Weapon.prototype = Object.create(Item.prototype);
+Weapon.prototype = Object.create(Item.prototype); // keeps the prototype clean
+Weapon.prototype.constructor = Weapon; // repair the inherited constructor
 
 /**
  * Class => Food(name, energy)
@@ -56,13 +57,18 @@ Weapon.prototype = Object.create(Item.prototype);
  * @property {number} energy
  */
 
+function Food(name, energy) {
+  Item.call(this, name);
+  this.energy = energy;
+}
 
 /**
  * Food Extends Item Class
  * -----------------------------
  */
 
-
+Food.prototype = Object.create(Item.prototype);
+Food.prototype.constructor = Food;
 
 /**
  * Class => Player(name, health, strength, speed)
