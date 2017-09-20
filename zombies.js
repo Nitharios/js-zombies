@@ -97,14 +97,14 @@ class Food extends Item {
 
 class Player {
   constructor(name, health, strength, speed) {
+    this._pack = [];
+    this._maxHealth = health;
     this.name = name;
     this.health = health;
     this.strength = strength;
     this.speed = speed;
     this.isAlive = true;
     this.equipped = false;
-    this._pack = [];
-    this._maxHealth = health;
   }
 
   getPack() {
@@ -324,7 +324,15 @@ class Player {
  * @property {number} speed
  * @property {boolean} isAlive      Default value should be `true`.
  */
-
+  class Zombie {
+    constructor(health, strength, speed) {
+      this._maxHealth = health;
+      this.health = health;
+      this.strength = strength;
+      this.speed = speed;
+      this.isAlive = true;
+    }
+  }
 
 /**
  * Class => FastZombie(health, strength, speed)
