@@ -103,15 +103,15 @@ class Player {
     this.speed = speed;
     this.isAlive = true;
     this.equipped = false;
-    var _pack = [];
-    var _maxHealth = health;
+    this._pack = [];
+    this._maxHealth = health;
   }
 
-  get pack() {
+  getPack() {
     return this._pack;
   }
 
-  get maxHealth() {
+  getMaxHealth() {
     return this._maxHealth;
   }
 }
