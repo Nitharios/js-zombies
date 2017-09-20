@@ -38,7 +38,7 @@ function Weapon(name, damage) {
  * -----------------------------
  */
 
-Weapon.prototype = new Item(name);
+Weapon.prototype = Object.create(Item.prototype);
 
 /**
  * Class => Food(name, energy)
