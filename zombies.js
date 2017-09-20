@@ -256,7 +256,7 @@ class Player {
     let energyCount = itemToEat.energy;
 
     if (this._pack.includes(itemToEat) && itemToEat instanceof Food) {
-      let tempItem = this._pack.splice(this._pack.indexOf(itemToEat), 1);
+      this._pack.splice(this._pack.indexOf(itemToEat), 1);
       this.health = this.health + energyCount;
 
       if (this.health > this.getMaxHealth()) {
@@ -377,7 +377,11 @@ class Player {
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-
+  class StrongZombie extends Zombie {
+    constructor(health, strength, speed) {
+      super(health, strength, speed);
+    }
+  }
 
 /**
  * StrongZombie Extends Zombie Class
