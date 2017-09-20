@@ -298,7 +298,15 @@ class Player {
  * @name equippedWith
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
-
+  equippedWith() {
+    if (!this.equipped) {
+      console.log('No weapon equipped');
+      return false;
+    } else {
+      console.log(this.name + ' has ' + this.equipped + ' equipped.');
+      return this.equipped.name;
+    }
+  }
 }
 
 /**
