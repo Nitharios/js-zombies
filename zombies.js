@@ -221,9 +221,16 @@ class Player {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
   equip(itemToEquip) {
-    if (!(this.equipped) && this._pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
+    let itemIndex = this._pack.indexOf(itemToEquip);
 
-      this.equipped = true;
+    if (!this.equipped && this._pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
+      this.equipped = itemToEquip;
+      this._pack.splice(itemIndex, 1);
+    } else if (this.equipped && this._pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
+      let tempItem = this.equipped;
+      this.equipped = itemToEquip;
+      this._pack.splice(itemIndex, 1);
+      this._pack.push(tempItem);
     }
   }
 
@@ -243,7 +250,7 @@ class Player {
  * You should be able to invoke this function on a Player instance.
  *
  * @name eat
- * @param {Food} itemToEat  The food item to eat.
+ * @param {Food} itemToEat  The fod item to eat.
  */
 
 
