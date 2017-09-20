@@ -252,7 +252,18 @@ class Player {
  * @name eat
  * @param {Food} itemToEat  The fod item to eat.
  */
+  eat(itemToEat) {
+    let energyCount = itemToEat.energy;
 
+    if (this._pack.includes(itemToEat) && itemToEat instanceof Food) {
+      let tempItem = this._pack.splice(this._pack.indexOf(itemToEat), 1);
+      this.health = this.health + energyCount;
+
+      if (this.health > this.getMaxHealth()) {
+        this.health = this._maxHealth;
+      }
+    }
+  }
 
 /**
  * Player Class Method => useItem(item)
