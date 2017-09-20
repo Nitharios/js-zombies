@@ -114,7 +114,6 @@ class Player {
   getMaxHealth() {
     return this._maxHealth;
   }
-}
 
 /**
  * Player Class Method => checkPack()
@@ -128,6 +127,13 @@ class Player {
  * @name checkPack
  */
 
+  checkPack() {
+    let playerPack = this._pack.length;
+    console.log('Contents: ');
+    for (let i in playerPack) {
+      console.log(playerPack[i] + ", ");
+    }
+  }
 
 /**
  * Player Class Method => takeItem(item)
@@ -146,8 +152,17 @@ class Player {
  * @param {Item/Weapon/Food} item   The item to take.
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
-
-
+  takeItem(item) {
+    if (this._pack.length > 2 && !this._pack.includes(item)) {
+      console.log('Your pack is full.');
+      return false;
+    } else {
+      this._pack.push(item);
+      console.log(this.name + ' picked up ' + item.name);
+      return true;
+    }
+  }
+ 
 /**
  * Player Class Method => discardItem(item)
  * -----------------------------
@@ -173,7 +188,18 @@ class Player {
  * @param {Item/Weapon/Food} item   The item to discard.
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
+  discardItem(item) {
+    let itemIndex = this._pack.indexOf(item);
 
+    if (itemIndex !== -1) {
+      this._pack.splice(itemIndex, 1);
+      console.log(this.name + ' ' + item.name + ' was discarded.');
+      return true;
+    } else {
+      console.log(item.name + ' nothing was discarded since the item could not be found.');
+      return false;
+    }
+  }
 
 /**
  * Player Class Method => equip(itemToEquip)
@@ -194,7 +220,12 @@ class Player {
  * @name equip
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
+  equip(itemToEquip) {
+    if (!(this.equipped) && this._pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
 
+      this.equipped = true;
+    }
+  }
 
 /**
  * Player Class Method => eat(itemToEat)
@@ -244,6 +275,7 @@ class Player {
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+}
 
 /**
  * Class => Zombie(health, strength, speed)
