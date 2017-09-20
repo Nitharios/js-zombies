@@ -1,14 +1,4 @@
 // jshint esversion: 6
-
-/**
- * Class => Item(name)
- * -----------------------------
- * Creates an item.
- *
- * @name Item
- * @param {string} name     The item's name.
- * @property {string} name
- */
 class Item {
   constructor(name) {
     this.name = name;
@@ -63,7 +53,7 @@ class Player {
       console.log('Your pack is full.');
       return false;
     } else {
-      this._pack.push(item);
+      packContents.push(item);
       console.log(this.name + ' picked up ' + item.name);
       return true;
     }
@@ -84,11 +74,13 @@ class Player {
 
   equip(itemToEquip) {
     let itemIndex = this._pack.indexOf(itemToEquip);
+    let equipped = this.equipped;
+    let _pack = this._pack;
 
-    if (!this.equipped && this._pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
+    if (!equipped && _pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
       this.equipped = itemToEquip;
       this._pack.splice(itemIndex, 1);
-    } else if (this.equipped && this._pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
+    } else if (equipped && _pack.includes(itemToEquip) && itemToEquip instanceof Weapon) {
       let tempItem = this.equipped;
       this.equipped = itemToEquip;
       this._pack.splice(itemIndex, 1);
@@ -164,6 +156,16 @@ class ExplodingZombie extends Zombie {
     super(health, strength, speed);
   }
 }
+
+/**
+ * Class => Item(name)
+ * -----------------------------
+ * Creates an item.
+ *
+ * @name Item
+ * @param {string} name     The item's name.
+ * @property {string} name
+ */
 
 /**
  * Class => Weapon(name, damage)
