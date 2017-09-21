@@ -120,9 +120,9 @@ function Player(name, health, strength, speed) {
  * @name checkPack
  */
 
-  function checkPack() {
-    var currentContents = this.getPack();
-  }
+  this.checkPack = function() {
+    console.log(this._pack);
+  };
 
 /**
  * Player Class Method => takeItem(item)
