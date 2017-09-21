@@ -301,6 +301,15 @@ function Player(name, health, strength, speed) {
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+  this.equippedWith = function() {
+    if (this.equipped) {
+      console.log(this.equipped.name + ' is equipped!');
+        return this.equipped.name;
+    } else {
+      console.log('Nothing is equipped!');
+      return false;
+    }
+  };
 }
 
 /**
