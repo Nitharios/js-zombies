@@ -215,6 +215,21 @@ function Player(name, health, strength, speed) {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+  this.equip = function(itemToEquip) {
+    var packContents = this.getPack();
+    var itemIndex = packContents.indexOf(itemToEquip);
+
+    if (itemToEquip instanceof Weapon && itemIndex > -1) {
+      if (!this.equipped) {
+        this._pack.splice(itemIndex, 1);
+        this.equipped = itemToEquip;
+      } else {
+        var itemToSwap = this.equipped;
+        this._pack.splice(itemIndex, 1, itemToSwap);
+        this.equipped = itemToEquip;
+      }
+    }
+  };
 
 /**
  * Player Class Method => eat(itemToEat)
