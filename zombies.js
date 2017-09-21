@@ -250,6 +250,21 @@ function Player(name, health, strength, speed) {
  * @param {Food} itemToEat  The food item to eat.
  */
 
+  this.eat = function(itemToEat) {
+    var packContents = this.getPack();
+    var itemIndex = packContents.indexOf(itemToEat);
+    var energy = itemToEat.energy;
+
+    if (itemToEat instanceof Food && itemIndex > -1) {
+      this._pack.splice(itemIndex, 1);
+
+      if (energy + this.health > this.getMaxHealth()) {
+        this.health = this.getMaxHealth();
+      } else {
+        this.health += energy;
+      }
+    }
+  };
 
 /**
  * Player Class Method => useItem(item)
