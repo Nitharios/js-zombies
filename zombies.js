@@ -142,6 +142,18 @@ function Player(name, health, strength, speed) {
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+  this.takeItem = function(item) {
+    var packContents = this.getPack();
+
+    if (packContents.length >= 3 && !packContents.includes(item)) {
+      console.log(this.name + ', your pack is full!');
+      return false;
+    } else {
+      this._pack.push(item);
+      console.log(this.name + ' stored ' + item.name);
+      return true;
+    }
+  };
 
 /**
  * Player Class Method => discardItem(item)
