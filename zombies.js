@@ -99,18 +99,14 @@ function Player(name, health, strength, speed) {
   this.health = health;
   this.strength = strength;
   this.speed = speed;
-
   this.isAlive = true;
   this.equipped = false;
-
-  function getPack() {
-    return _pack;
-  }
-
-  function getMaxHealth() {
-    return maxHealth;
-  }
-}
+  this.getPack = function() {
+    return this._pack;
+  };
+  this.getMaxHealth = function() {
+    return this._maxHealth;
+  };
 
 /**
  * Player Class Method => checkPack()
@@ -124,6 +120,9 @@ function Player(name, health, strength, speed) {
  * @name checkPack
  */
 
+  function checkPack() {
+    var currentContents = this.getPack();
+  }
 
 /**
  * Player Class Method => takeItem(item)
@@ -240,6 +239,7 @@ function Player(name, health, strength, speed) {
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+}
 
 /**
  * Class => Zombie(health, strength, speed)
