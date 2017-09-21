@@ -181,6 +181,19 @@ function Player(name, health, strength, speed) {
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
+  this.discardItem = function(item) {
+    var packContents = this.getPack();
+    var itemIndex = packContents.indexOf(item);
+
+    if (itemIndex === -1) {
+      console.log(item.name + ' nothing discard. Item not found.');
+      return false;
+    } else {
+      this._pack.splice(itemIndex, 1);
+      console.log(this.name + ' discarded ' + item.name);
+      return true;
+    }
+  };
 
 /**
  * Player Class Method => equip(itemToEquip)
